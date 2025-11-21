@@ -1,0 +1,496 @@
+/* --- VARIABLES CSS & RESET --- */
+:root {
+    --primary-color: #E63946; /* Le rouge inspiré de votre logo */
+    --primary-hover: #c92a37;
+    --dark-bg: #121212;       /* Fond très sombre */
+    --darker-bg: #0a0a0a;     /* Fond encore plus sombre pour l'alternance */
+    --text-light: #F1F1F1;    /* Blanc cassé pour le texte principal */
+    --text-gray: #A0A0A0;     /* Gris pour le texte secondaire */
+    --nav-height: 80px;
+    --font-main: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Défilement fluide quand on clique sur les liens */
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- CLASSES UTILITAIRES --- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.text-red { color: var(--primary-color); }
+.text-center { text-align: center; }
+.bg-dark { background-color: var(--dark-bg); }
+.bg-darker { background-color: var(--darker-bg); }
+.section-padding { padding: 100px 0; }
+.mt-4 { margin-top: 2rem; }
+
+h1, h2, h3 {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h2.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+/* Petite ligne rouge sous les titres */
+h2.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: 15px auto 0;
+}
+
+/* --- BOUTONS --- */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border-color: white;
+    color: white;
+}
+
+.btn-outline:hover {
+    background-color: white;
+    color: var(--dark-bg);
+}
+
+.btn-full { width: 100%; text-align: center; }
+
+/* --- NAVIGATION --- */
+header {
+    height: var(--nav-height);
+    background-color: rgba(18, 18, 18, 0.95); /* Fond semi-transparent */
+    backdrop-filter: blur(10px); /* Effet de flou moderne */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #333;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links li { margin-left: 2rem; }
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:not(.btn):hover { color: var(--primary-color); }
+
+/* Menu Hamburger (Mobile) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 100vh; /* Prend toute la hauteur de l'écran */
+    background-image: url('https://images.unsplash.com/photo-1565043589221-1a6b149dd80d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'); /* Image d'usine moderne placeholder */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: -var(--nav-height); /* Pour passer sous le menu fixe */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Dégradé sombre pour que le texte soit lisible sur l'image */
+    background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.9));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+}
+
+.hero-btns .btn { margin-right: 1rem; margin-bottom: 1rem; }
+
+/* --- FEATURES SECTION --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: var(--darker-bg);
+    padding: 3rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: 1px solid #333;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-color);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h3 { margin-bottom: 1rem; font-size: 1.3rem; }
+.feature-card p { color: var(--text-gray); }
+
+/* --- SOLUTIONS SECTION --- */
+.solution-item {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin-bottom: 6rem;
+}
+
+/* Inverse l'ordre pour la 2ème solution */
+.solution-item.image-right { flex-direction: row-reverse; }
+
+.solution-img {
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.solution-text { width: 50%; }
+
+.solution-text h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.list-check { list-style: none; margin-top: 1.5rem; }
+
+.list-check li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    color: var(--text-gray);
+}
+
+/* Ajoute une petite coche rouge avant chaque élément de liste */
+.list-check li::before {
+    content: '\2713'; /* Caractère unicode checkmark */
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* --- TECHNOLOGY SECTION --- */
+.tech-banner {
+    background: linear-gradient(45deg, var(--darker-bg), var(--dark-bg));
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+.lead-text {
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+.partner-logo-placeholder {
+    color: var(--text-gray);
+    border: 2px dashed #555;
+    padding: 20px;
+    display: inline-block;
+    margin: 20px 0;
+}
+
+.small-text { color: var(--text-gray); font-size: 0.9rem; }
+
+/* --- PRICING SECTION --- */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    max-width: 900px;
+    margin: 3rem auto 0;
+}
+
+.pricing-card {
+    background: var(--dark-bg);
+    border-radius: 15px;
+    padding: 3rem;
+    position: relative;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Mise en avant de la carte "Logiciel" */
+.pricing-card.featured {
+    border: 2px solid var(--primary-color);
+    transform: scale(1.05); /* Légèrement plus grande */
+    box-shadow: 0 0 30px rgba(230, 57, 70, 0.2);
+    z-index: 2;
+}
+
+.pricing-header h3 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+.pricing-header p { color: var(--text-gray); }
+
+.pricing-cost { margin: 2rem 0 1rem; }
+.currency { font-size: 1.5rem; vertical-align: top; }
+.amount { font-size: 4rem; font-weight: 700; color: white; }
+.period { color: var(--text-gray); }
+
+.pricing-note { color: var(--text-gray); font-style: italic; margin-bottom: 1.5rem; }
+
+.pricing-features { list-style: none; margin-bottom: 2rem; flex-grow: 1; }
+.pricing-features li {
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.8rem;
+    color: var(--text-light);
+}
+
+.discount-badge {
+    background: rgba(230, 57, 70, 0.1);
+    color: var(--primary-color);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--primary-color);
+}
+
+/* --- ABOUT SECTION --- */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.about-text { flex: 1; }
+.about-text p { margin-bottom: 1rem; color: var(--text-gray); }
+.about-image { flex: 1; }
+.about-image img {
+    width: 100%;
+    border-radius: 10px;
+    /* Effet noir et blanc pour l'image à propos */
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+.about-image img:hover { filter: grayscale(0%); }
+
+/* --- FOOTER & CONTACT --- */
+footer { padding: 5rem 0 2rem; }
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    color: var(--text-gray);
+}
+
+.contact-item i { width: 30px; margin-right: 10px; font-size: 1.2rem; }
+
+.highlight-support {
+    background: rgba(230, 57, 70, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-flex;
+    border: 1px solid var(--primary-color);
+}
+
+/* Formulaire */
+.form-group { margin-bottom: 1.5rem; }
+
+input, textarea {
+    width: 100%;
+    padding: 15px;
+    background: var(--dark-bg);
+    border: 1px solid #333;
+    border-radius: 5px;
+    color: white;
+    font-family: var(--font-main);
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 2rem;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* --- RESPONSIVE DESIGN (Mobile/Tablette) --- */
+@media screen and (max-width: 968px) {
+    /* Ajustement navigation mobile */
+    .nav-links {
+        position: fixed;
+        right: 0px;
+        height: 100vh;
+        top: var(--nav-height);
+        background-color: var(--darker-bg);
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform: translateX(100%); /* Caché par défaut */
+        transition: transform 0.4s ease-in;
+        padding-top: 2rem;
+        border-left: 1px solid #333;
+    }
+
+    /* Classe ajoutée par le Javascript quand le menu est ouvert */
+    .nav-links.nav-active {
+        transform: translateX(0%);
+    }
+
+    .nav-links li {
+        margin: 2rem 0;
+        opacity: 0; /* Pour l'animation */
+    }
+
+    .hamburger { display: block; }
+
+    /* Ajustement des tailles de police */
+    .hero h1 { font-size: 2.5rem; }
+    h2.section-title { font-size: 2rem; }
+
+    /* Ajustement des grilles pour qu'elles s'empilent verticalement */
+    .solution-item, .about-container, .footer-grid {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    /* Annulation de l'inversion pour mobile */
+    .solution-item.image-right { flex-direction: column; }
+
+    .solution-img, .solution-text, .about-image img { width: 100%; }
+
+    .pricing-card.featured { transform: scale(1); }
+}
+
+@media screen and (max-width: 576px) {
+    .nav-links { width: 100%; } /* Menu pleine largeur sur petit mobile */
+}
+
+
+
+/* Ajouter à la fin de style.css */
+
+/* Animation pour les liens du menu mobile */
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+/* Animation de l'icône hamburger en X */
+.toggle .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .bar:nth-child(2) {
+    opacity: 0;
+}
+.toggle .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
